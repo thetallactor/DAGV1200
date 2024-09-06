@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
-//Name: TileFloorCreation.ma
-//Last modified: Fri, Sep 06, 2024 02:28:05 PM
+//Name: Fridge-Whiteboxing.ma
+//Last modified: Fri, Sep 06, 2024 03:07:10 PM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -11,21 +11,21 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 22631)";
-fileInfo "UUID" "78E0D95E-49C2-E8CE-D4A9-868A3600FB9A";
+fileInfo "UUID" "4112D467-4502-4A9C-05C0-FB8089C8E38F";
 createNode transform -s -n "persp";
 	rename -uid "FE991246-4E2C-B5DF-4CB6-7AA6E27967D5";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 13.135682162349555 14.124561164600664 7.484132844479932 ;
-	setAttr ".r" -type "double3" -32.138352744232279 1488.5999999996736 0 ;
+	setAttr ".t" -type "double3" 9.6632070595826587 8.4256815381863515 8.2647368369798393 ;
+	setAttr ".r" -type "double3" -23.738352744862059 1489.3999999998455 2.4436698605057128e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "DBEB4EE9-42E8-B6E9-EAF6-A284A37748A7";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 18.596206035520296;
+	setAttr ".coi" 15.962022387713052;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 1.3239566165433603 4.232020968375017 -2.9293040047142336 ;
+	setAttr ".tp" -type "double3" -1.4309075561633235 2 -1.244069416612529 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "C5EA3772-494F-3CC7-4CC0-8E900839608C";
@@ -83,7 +83,8 @@ createNode transform -n "KitchenWalls";
 createNode mesh -n "KitchenWallsShape" -p "KitchenWalls";
 	rename -uid "6C29DC11-4AFB-BDBA-DFDB-0392915671A0";
 	setAttr -k off ".v";
-	setAttr ".iog[0].og[0].gcl" -type "componentList" 1 "f[0:11]";
+	setAttr -s 4 ".iog[0].og";
+	setAttr ".iog[0].og[3].gcl" -type "componentList" 1 "f[0:11]";
 	setAttr ".ovs" no;
 	setAttr ".ove" yes;
 	setAttr ".ovrgbf" yes;
@@ -92,6 +93,7 @@ createNode mesh -n "KitchenWallsShape" -p "KitchenWalls";
 	setAttr ".csh" no;
 	setAttr ".rcsh" no;
 	setAttr ".vis" no;
+	setAttr -s 4 ".ciog[0].cog";
 	setAttr -s 6 ".gtag";
 	setAttr ".gtag[0].gtagnm" -type "string" "back";
 	setAttr ".gtag[0].gtagcmp" -type "componentList" 3 "f[0]" "f[3]" "f[6:7]";
@@ -4031,36 +4033,37 @@ createNode mesh -n "Tile13Shape" -p "Tile13";
 	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
-createNode transform -n "pCube1";
+createNode transform -n "WindowCut";
 	rename -uid "4F03CB10-4E67-147E-0972-5C80603DF205";
-	setAttr -av ".v";
+	setAttr -av ".v" no;
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovrgb" -type "float3" 0.74117649 0.74117649 0.74117649 ;
 	setAttr ".t" -type "double3" 1.3239566165433603 4.232020968375017 -3.0984649788238214 ;
-	setAttr ".s" -type "double3" 1.7194033407123326 2.2749123978496564 1 ;
-createNode mesh -n "pCubeShape1" -p "pCube1";
+	setAttr ".s" -type "double3" 2 2.5 1 ;
+createNode mesh -n "WindowCutShape" -p "WindowCut";
 	rename -uid "09B3DDF2-4FB7-B09A-35C5-BDBBCAD8EE62";
 	setAttr -k off ".v";
 	setAttr -s 2 ".iog[0].og";
-	setAttr ".ovs" no;
+	setAttr ".ovlod" 1;
 	setAttr ".ove" yes;
 	setAttr ".ovrgbf" yes;
 	setAttr ".ovrgb" -type "float3" 0.89969999 0.1575 0.1946 ;
 	setAttr ".ovca" 0.30000001192092896;
-	setAttr ".csh" no;
-	setAttr ".rcsh" no;
-	setAttr ".vis" no;
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 4 ".ciog[0].cog";
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
 createNode transform -n "polySurface1";
-	rename -uid "EDA4197A-41DF-A2BA-0A49-A7AB5FA2953C";
+	rename -uid "6F1712BA-4445-00E8-743F-C1A54DBB8C53";
 	setAttr ".rp" -type "double3" 0 3 0 ;
 	setAttr ".sp" -type "double3" 0 3 0 ;
+	setAttr ".hio" yes;
 createNode mesh -n "polySurfaceShape1" -p "polySurface1";
-	rename -uid "80EDD90C-4E49-7DC3-B2CC-458CF133918A";
+	rename -uid "C5867AE7-4DA2-DC97-0978-0CB3B5039AB8";
 	setAttr -k off ".v";
 	setAttr -s 4 ".iog[0].og";
 	setAttr ".vir" yes;
@@ -4070,10 +4073,175 @@ createNode mesh -n "polySurfaceShape1" -p "polySurface1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
+	setAttr ".hio" yes;
+createNode transform -n "Windowsill";
+	rename -uid "9743A11E-4563-2574-DFE2-CCABC1C8CB0F";
+	setAttr ".t" -type "double3" 1.3235930721418523 3.0799949201705541 -3.3202049670155005 ;
+	setAttr ".s" -type "double3" 2 0.19594825946832214 0.8 ;
+	setAttr ".rp" -type "double3" -0.93047483588491731 -0.097974065220603035 0.31426365187075467 ;
+	setAttr ".sp" -type "double3" -0.46523741794245865 -0.49999967076233176 0.12852730169210425 ;
+	setAttr ".spt" -type "double3" -0.46523741794245865 0.40202560554172873 0.18573635017865042 ;
+createNode mesh -n "WindowsillShape" -p "Windowsill";
+	rename -uid "07361A95-46AA-487C-8371-CEA76B405082";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".pv" -type "double2" 0.5 0.375 ;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "Fridge";
+	rename -uid "0FE8DF9B-4ECE-1385-68C8-AABE4D2009DC";
+	setAttr ".t" -type "double3" -2.269791938502117 2.3220315844351753 -1.7197017267242167 ;
+	setAttr ".s" -type "double3" 1.1826089236277619 4.4476527538038786 2.0216842974700198 ;
+	setAttr ".rp" -type "double3" -0.72461714581795156 -2.2474786609942421 -1.2747073575958514 ;
+	setAttr ".sp" -type "double3" -0.49999993805792298 -0.49999997506258831 -0.49999997977843491 ;
+	setAttr ".spt" -type "double3" -0.22461720776002853 -1.7474786859316538 -0.77470737781741661 ;
+createNode mesh -n "FridgeShape" -p "Fridge";
+	rename -uid "CEE8D12B-4FFF-90A9-4EE4-6794CCBAC930";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "FridgeDoor";
+	rename -uid "5123D3DC-4EF4-B5F0-39FD-5497670F275F";
+	setAttr ".t" -type "double3" -1.0871830036145105 2.322031584435174 -1.7197017267242167 ;
+	setAttr ".s" -type "double3" 0.23651683085811775 4.4476527538038786 2.0216842974700198 ;
+	setAttr ".rp" -type "double3" -0.72461723785582643 -2.2474788100058527 0.74697693138272503 ;
+	setAttr ".sp" -type "double3" -0.50000001588405207 -0.50000000856601579 0.50000001602138178 ;
+	setAttr ".spt" -type "double3" -0.22461722197177436 -1.7474788014398366 0.24697691536134325 ;
+createNode mesh -n "FridgeDoorShape" -p "FridgeDoor";
+	rename -uid "1D820ABB-4156-6935-2AD2-1C8A04C0A4F0";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 6 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
+	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
+	setAttr ".gtag[2].gtagnm" -type "string" "front";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
+	setAttr ".gtag[3].gtagnm" -type "string" "left";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
+	setAttr ".gtag[4].gtagnm" -type "string" "right";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
+	setAttr ".gtag[5].gtagnm" -type "string" "top";
+	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
+		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
+		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
+		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
+	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5
+		mu 0 4 0 1 3 2
+		f 4 1 7 -3 -7
+		mu 0 4 2 3 5 4
+		f 4 2 9 -4 -9
+		mu 0 4 4 5 7 6
+		f 4 3 11 -1 -11
+		mu 0 4 6 7 9 8
+		f 4 -12 -10 -8 -6
+		mu 0 4 1 10 11 3
+		f 4 10 4 6 8
+		mu 0 4 12 0 2 13;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
+createNode transform -n "FridgeHandel1";
+	rename -uid "10B0D5DE-46D2-3726-3AB0-B984029DD93B";
+	setAttr ".t" -type "double3" -1.3190714955933895 1.997202725249547 -1.3308708263339035 ;
+	setAttr ".s" -type "double3" 0.094867622332346233 0.39863124910186964 0.18145160074094907 ;
+	setAttr ".rp" -type "double3" -0.085403954922357528 0.34333696858285045 0.090725739091777086 ;
+	setAttr ".sp" -type "double3" -0.49999997723033984 0.49999990561211582 0.4999996622862648 ;
+	setAttr ".spt" -type "double3" 0.41459602230798231 -0.15666293702926537 -0.40927392319448769 ;
+createNode mesh -n "FridgeHandelShape1" -p "FridgeHandel1";
+	rename -uid "210504CA-4A5A-EFE4-7550-869F36074D56";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+createNode transform -n "FridgeHandel2";
+	rename -uid "64E18810-43B5-AA0D-06A4-1A8BC2F086C6";
+	setAttr ".t" -type "double3" -1.4898793161113411 2.3056774222787877 -1.3308708153479383 ;
+	setAttr ".s" -type "double3" 0.17080791762319153 0.069724523882698272 0.18145160074094907 ;
+	setAttr ".rp" -type "double3" -0.085403972844347323 -0.034862280911904783 0.090725835536929339 ;
+	setAttr ".sp" -type "double3" -0.50000008215514846 -0.50000027207866893 0.50000019380625282 ;
+	setAttr ".spt" -type "double3" 0.41459610931080115 0.46513799116676413 -0.40927435826932346 ;
+createNode mesh -n "FridgeHandelShape2" -p "FridgeHandel2";
+	rename -uid "99186996-4C15-0C4E-30A1-67AE32765422";
+	setAttr -k off ".v";
+	setAttr ".vir" yes;
+	setAttr ".vif" yes;
+	setAttr -s 6 ".gtag";
+	setAttr ".gtag[0].gtagnm" -type "string" "back";
+	setAttr ".gtag[0].gtagcmp" -type "componentList" 1 "f[2]";
+	setAttr ".gtag[1].gtagnm" -type "string" "bottom";
+	setAttr ".gtag[1].gtagcmp" -type "componentList" 1 "f[3]";
+	setAttr ".gtag[2].gtagnm" -type "string" "front";
+	setAttr ".gtag[2].gtagcmp" -type "componentList" 1 "f[0]";
+	setAttr ".gtag[3].gtagnm" -type "string" "left";
+	setAttr ".gtag[3].gtagcmp" -type "componentList" 1 "f[5]";
+	setAttr ".gtag[4].gtagnm" -type "string" "right";
+	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[4]";
+	setAttr ".gtag[5].gtagnm" -type "string" "top";
+	setAttr ".gtag[5].gtagcmp" -type "componentList" 1 "f[1]";
+	setAttr ".pv" -type "double2" 0.5 0.25 ;
+	setAttr ".uvst[0].uvsn" -type "string" "map1";
+	setAttr -s 14 ".uvst[0].uvsp[0:13]" -type "float2" 0.375 0 0.625 0 0.375
+		 0.25 0.625 0.25 0.375 0.5 0.625 0.5 0.375 0.75 0.625 0.75 0.375 1 0.625 1 0.875 0
+		 0.875 0.25 0.125 0 0.125 0.25;
+	setAttr ".cuvs" -type "string" "map1";
+	setAttr ".dcc" -type "string" "Ambient+Diffuse";
+	setAttr ".covm[0]"  0 1 1;
+	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 6 ".pt[0:5]" -type "float3"  0 0 -5.9604645e-08 0 0 -5.9604645e-08 
+		1.4062971e-07 0 -5.9604645e-08 -1.4062971e-07 0 -5.9604645e-08 1.4062971e-07 0 0 
+		-1.4062971e-07 0 0;
+	setAttr -s 8 ".vt[0:7]"  -0.5 -0.5 0.5 0.5 -0.5 0.5 -0.5 0.5 0.5 0.5 0.5 0.5
+		 -0.5 0.5 -0.5 0.5 0.5 -0.5 -0.5 -0.5 -0.5 0.5 -0.5 -0.5;
+	setAttr -s 12 ".ed[0:11]"  0 1 0 2 3 0 4 5 0 6 7 0 0 2 0 1 3 0 2 4 0
+		 3 5 0 4 6 0 5 7 0 6 0 0 7 1 0;
+	setAttr -s 6 -ch 24 ".fc[0:5]" -type "polyFaces" 
+		f 4 0 5 -2 -5
+		mu 0 4 0 1 3 2
+		f 4 1 7 -3 -7
+		mu 0 4 2 3 5 4
+		f 4 2 9 -4 -9
+		mu 0 4 4 5 7 6
+		f 4 3 11 -1 -11
+		mu 0 4 6 7 9 8
+		f 4 -12 -10 -8 -6
+		mu 0 4 1 10 11 3
+		f 4 10 4 6 8
+		mu 0 4 12 0 2 13;
+	setAttr ".cd" -type "dataPolyComponent" Index_Data Edge 0 ;
+	setAttr ".cvd" -type "dataPolyComponent" Index_Data Vertex 0 ;
+	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
+	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
 	rename -uid "CDED5918-4459-8EF8-B0D2-9CAD496249CD";
-	setAttr -s 27 ".lnk";
-	setAttr -s 27 ".slnk";
+	setAttr -s 30 ".lnk";
+	setAttr -s 30 ".slnk";
 createNode displayLayerManager -n "layerManager";
 	rename -uid "54A6FD7D-4B44-F2F1-E4A6-5FB64469DE3C";
 createNode displayLayer -n "defaultLayer";
@@ -4192,30 +4360,6 @@ createNode shadingEngine -n "lambert4SG";
 	setAttr ".ro" yes;
 createNode materialInfo -n "materialInfo3";
 	rename -uid "FF5A764E-432E-C446-D9BE-DBB1A17B75E7";
-createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
-	rename -uid "EBF85979-4936-EF0A-C8CF-D7AA8B61F26B";
-	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
-	setAttr ".tgi[0].vl" -type "double2" -44.047617297323995 -464.28569583665836 ;
-	setAttr ".tgi[0].vh" -type "double2" 102.38094831269902 44.047617297323995 ;
-	setAttr -s 6 ".tgi[0].ni";
-	setAttr ".tgi[0].ni[0].x" 90;
-	setAttr ".tgi[0].ni[0].y" -70;
-	setAttr ".tgi[0].ni[0].nvs" 1923;
-	setAttr ".tgi[0].ni[1].x" -217.14285278320312;
-	setAttr ".tgi[0].ni[1].y" -70;
-	setAttr ".tgi[0].ni[1].nvs" 1923;
-	setAttr ".tgi[0].ni[2].x" -217.14285278320312;
-	setAttr ".tgi[0].ni[2].y" -70;
-	setAttr ".tgi[0].ni[2].nvs" 1923;
-	setAttr ".tgi[0].ni[3].x" 90;
-	setAttr ".tgi[0].ni[3].y" -70;
-	setAttr ".tgi[0].ni[3].nvs" 1923;
-	setAttr ".tgi[0].ni[4].x" -217.14285278320312;
-	setAttr ".tgi[0].ni[4].y" -70;
-	setAttr ".tgi[0].ni[4].nvs" 1923;
-	setAttr ".tgi[0].ni[5].x" 90;
-	setAttr ".tgi[0].ni[5].y" -70;
-	setAttr ".tgi[0].ni[5].nvs" 1923;
 createNode materialInfo -n "pasted__materialInfo3";
 	rename -uid "B75A8B0B-4226-BDC1-0FAC-39B2774815F3";
 createNode shadingEngine -n "pasted__lambert4SG";
@@ -4408,32 +4552,110 @@ createNode lambert -n "pasted__pasted__WhiteTile3";
 createNode polyCube -n "polyCube1";
 	rename -uid "80C09518-4925-5E10-07E3-B78B5C2E5900";
 	setAttr ".cuv" 4;
-createNode polyBoolean -n "polyBoolean1";
-	rename -uid "90792C8C-4DEB-9533-E752-24B77DFF65E6";
-	setAttr -s 2 ".ip";
-	setAttr -s 2 ".im";
-	setAttr ".op" -type "Int32Array" 2 2 2 ;
-	setAttr ".ee" -type "Int32Array" 2 1 1 ;
-	setAttr ".mg" -type "Int32Array" 2 -103 -101 ;
-createNode groupId -n "groupId1";
-	rename -uid "291327B7-4595-073D-BDAB-8B826F302FC5";
-	setAttr ".ihi" 0;
 createNode groupId -n "groupId2";
-	rename -uid "18E813A1-4027-255D-4CA8-1BAAE3A20375";
+	rename -uid "06ABC0FE-46D0-0B2C-198F-86B807D514FE";
 	setAttr ".ihi" 0;
 createNode groupId -n "groupId3";
-	rename -uid "172DF49A-476C-460B-C54F-269A86E37702";
+	rename -uid "90F1557F-48CE-635F-2F2F-23BDC9903654";
 	setAttr ".ihi" 0;
 createNode groupParts -n "groupParts1";
-	rename -uid "739C003E-42AC-E142-378E-C79623E5464C";
+	rename -uid "49B1D5E0-4125-B66A-4775-FA8FA600235C";
 	setAttr ".ihi" 0;
 	setAttr ".ic" -type "componentList" 1 "f[0:5]";
 createNode groupId -n "groupId4";
-	rename -uid "49658C61-4836-E4F5-8880-0B87A7122978";
+	rename -uid "DCB37241-4F0A-12D2-6FAE-D49CD7B550F3";
+	setAttr ".ihi" 0;
+createNode polyBoolean -n "polyBoolean1";
+	rename -uid "815569CA-44AA-DA40-625A-F89FDA691CB5";
+	setAttr -s 2 ".ip";
+	setAttr -s 2 ".im";
+	setAttr ".op" -type "Int32Array" 2 2 6 ;
+	setAttr ".ee" -type "Int32Array" 2 1 1 ;
+	setAttr ".mg" -type "Int32Array" 2 -118 -116 ;
+createNode groupId -n "groupId1";
+	rename -uid "A3BE085B-46B8-4B69-B58F-8799976FD1CA";
 	setAttr ".ihi" 0;
 createNode groupId -n "groupId5";
-	rename -uid "E6332188-40C3-CDD8-97BF-C6962437DA72";
+	rename -uid "21022ED2-4A25-F564-272D-1581BB14E16B";
 	setAttr ".ihi" 0;
+createNode polyCube -n "polyCube2";
+	rename -uid "919193FE-4A43-2DB8-3A96-E7B2E8A0C8E8";
+	setAttr ".cuv" 4;
+createNode lambert -n "Wood";
+	rename -uid "69A711ED-4C46-4C36-2160-0182CB03CA28";
+	setAttr ".c" -type "float3" 0.324 0.20496799 0.097524002 ;
+createNode shadingEngine -n "lambert5SG";
+	rename -uid "3B33538F-4C04-7A56-832D-E98FF933D076";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo4";
+	rename -uid "BC1D6C8B-44CE-5E61-099A-48A42ED365CA";
+createNode polyCube -n "polyCube3";
+	rename -uid "570FAEB1-4722-387A-5BB8-2BBFE7192100";
+	setAttr ".cuv" 4;
+createNode lambert -n "FridgeWhite";
+	rename -uid "51C93CC9-45EF-2E3D-A345-8FAE93047BDC";
+	setAttr ".c" -type "float3" 0.87199998 0.87199998 0.87199998 ;
+createNode shadingEngine -n "lambert6SG";
+	rename -uid "C813A06D-46D2-AB53-DD86-F3B9B2E55E37";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo5";
+	rename -uid "C4AA83D6-44FC-699E-ECB1-5281D1665302";
+createNode lambert -n "FridgeRed";
+	rename -uid "9C7CA86E-4C85-78FF-1A2E-F6869420A0C6";
+	setAttr ".c" -type "float3" 1 0.2685 0.25490001 ;
+createNode shadingEngine -n "lambert7SG";
+	rename -uid "211A3E04-4A41-EF5E-F431-BB9985C6E1EF";
+	setAttr ".ihi" 0;
+	setAttr ".ro" yes;
+createNode materialInfo -n "materialInfo6";
+	rename -uid "6324E94F-4EA9-DFE7-58C6-0BA9E361A244";
+createNode nodeGraphEditorInfo -n "hyperShadePrimaryNodeEditorSavedTabsInfo";
+	rename -uid "CE23E161-4DA2-458C-4B1D-29BABEA23709";
+	setAttr ".tgi[0].tn" -type "string" "Untitled_1";
+	setAttr ".tgi[0].vl" -type "double2" -44.047617297323995 -464.28569583665836 ;
+	setAttr ".tgi[0].vh" -type "double2" 102.38094831269902 44.047617297323995 ;
+	setAttr -s 12 ".tgi[0].ni";
+	setAttr ".tgi[0].ni[0].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[0].y" -70;
+	setAttr ".tgi[0].ni[0].nvs" 1923;
+	setAttr ".tgi[0].ni[1].x" 90;
+	setAttr ".tgi[0].ni[1].y" -70;
+	setAttr ".tgi[0].ni[1].nvs" 1923;
+	setAttr ".tgi[0].ni[2].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[2].y" -70;
+	setAttr ".tgi[0].ni[2].nvs" 1923;
+	setAttr ".tgi[0].ni[3].x" 90;
+	setAttr ".tgi[0].ni[3].y" -70;
+	setAttr ".tgi[0].ni[3].nvs" 1923;
+	setAttr ".tgi[0].ni[4].x" 90;
+	setAttr ".tgi[0].ni[4].y" -70;
+	setAttr ".tgi[0].ni[4].nvs" 1923;
+	setAttr ".tgi[0].ni[5].x" 90;
+	setAttr ".tgi[0].ni[5].y" -70;
+	setAttr ".tgi[0].ni[5].nvs" 1923;
+	setAttr ".tgi[0].ni[6].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[6].y" -70;
+	setAttr ".tgi[0].ni[6].nvs" 1923;
+	setAttr ".tgi[0].ni[7].x" 90;
+	setAttr ".tgi[0].ni[7].y" -70;
+	setAttr ".tgi[0].ni[7].nvs" 1923;
+	setAttr ".tgi[0].ni[8].x" 90;
+	setAttr ".tgi[0].ni[8].y" -70;
+	setAttr ".tgi[0].ni[8].nvs" 1923;
+	setAttr ".tgi[0].ni[9].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[9].y" -70;
+	setAttr ".tgi[0].ni[9].nvs" 1923;
+	setAttr ".tgi[0].ni[10].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[10].y" -70;
+	setAttr ".tgi[0].ni[10].nvs" 1923;
+	setAttr ".tgi[0].ni[11].x" -217.14285278320312;
+	setAttr ".tgi[0].ni[11].y" -70;
+	setAttr ".tgi[0].ni[11].nvs" 1923;
+createNode polyCube -n "polyCube4";
+	rename -uid "8846301B-4060-D92D-2210-B09DF4B9E646";
+	setAttr ".cuv" 4;
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -4445,10 +4667,10 @@ select -ne :hardwareRenderingGlobals;
 	setAttr ".fprt" yes;
 	setAttr ".rtfm" 1;
 select -ne :renderPartition;
-	setAttr -s 27 ".st";
+	setAttr -s 30 ".st";
 select -ne :renderGlobalsList1;
 select -ne :defaultShaderList1;
-	setAttr -s 30 ".s";
+	setAttr -s 33 ".s";
 select -ne :postProcessList1;
 	setAttr -s 2 ".p";
 select -ne :defaultRenderingList1;
@@ -4456,7 +4678,7 @@ select -ne :standardSurface1;
 	setAttr ".bc" -type "float3" 0.40000001 0.40000001 0.40000001 ;
 	setAttr ".sr" 0.5;
 select -ne :initialShadingGroup;
-	setAttr -s 3 ".dsm";
+	setAttr -s 5 ".dsm";
 	setAttr ".ro" yes;
 	setAttr -s 2 ".gn";
 select -ne :initialParticleSE;
@@ -4480,17 +4702,20 @@ select -ne :hardwareRenderGlobals;
 	setAttr ".btrs" 512;
 select -ne :ikSystem;
 	setAttr -s 4 ".sol";
-connectAttr "groupId1.id" "KitchenWallsShape.iog.og[0].gid";
-connectAttr "lambert2SG.mwc" "KitchenWallsShape.iog.og[0].gco";
-connectAttr "groupId2.id" "KitchenWallsShape.ciog.cog[0].cgid";
-connectAttr "groupId3.id" "pCubeShape1.iog.og[0].gid";
-connectAttr ":initialShadingGroup.mwc" "pCubeShape1.iog.og[0].gco";
-connectAttr "groupParts1.og" "pCubeShape1.i";
-connectAttr "groupId4.id" "pCubeShape1.ciog.cog[0].cgid";
+connectAttr "groupId1.id" "KitchenWallsShape.iog.og[3].gid";
+connectAttr "lambert2SG.mwc" "KitchenWallsShape.iog.og[3].gco";
+connectAttr "groupId2.id" "KitchenWallsShape.ciog.cog[3].cgid";
+connectAttr "groupId3.id" "WindowCutShape.iog.og[3].gid";
+connectAttr ":initialShadingGroup.mwc" "WindowCutShape.iog.og[3].gco";
+connectAttr "groupParts1.og" "WindowCutShape.i";
+connectAttr "groupId4.id" "WindowCutShape.ciog.cog[3].cgid";
 connectAttr "polyBoolean1.out" "polySurfaceShape1.i";
 connectAttr "groupId3.id" "polySurfaceShape1.iog.og[0].gid";
 connectAttr "groupId1.id" "polySurfaceShape1.iog.og[1].gid";
 connectAttr "groupId5.id" "polySurfaceShape1.ciog.cog[0].cgid";
+connectAttr "polyCube2.out" "WindowsillShape.i";
+connectAttr "polyCube3.out" "FridgeShape.i";
+connectAttr "polyCube4.out" "FridgeHandelShape1.i";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "lambert2SG.message" ":defaultLightSet.message";
@@ -4518,6 +4743,9 @@ relationship "link" ":lightLinker1" "pasted__pasted__pasted__lambert4SG.message"
 relationship "link" ":lightLinker1" "pasted__pasted__pasted__lambert3SG.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "pasted__pasted__pasted__lambert3SG2.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "pasted__pasted__pasted__lambert4SG2.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "lambert5SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "lambert6SG.message" ":defaultLightSet.message";
+relationship "link" ":lightLinker1" "lambert7SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "lambert2SG.message" ":defaultLightSet.message";
@@ -4545,11 +4773,14 @@ relationship "shadowLink" ":lightLinker1" "pasted__pasted__pasted__lambert4SG.me
 relationship "shadowLink" ":lightLinker1" "pasted__pasted__pasted__lambert3SG.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "pasted__pasted__pasted__lambert3SG2.message" ":defaultLightSet.message";
 relationship "shadowLink" ":lightLinker1" "pasted__pasted__pasted__lambert4SG2.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "lambert5SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "lambert6SG.message" ":defaultLightSet.message";
+relationship "shadowLink" ":lightLinker1" "lambert7SG.message" ":defaultLightSet.message";
 connectAttr "layerManager.dli[0]" "defaultLayer.id";
 connectAttr "renderLayerManager.rlmi[0]" "defaultRenderLayer.rlid";
 connectAttr "LightBlueWall.oc" "lambert2SG.ss";
-connectAttr "KitchenWallsShape.iog.og[0]" "lambert2SG.dsm" -na;
-connectAttr "KitchenWallsShape.ciog.cog[0]" "lambert2SG.dsm" -na;
+connectAttr "KitchenWallsShape.iog.og[3]" "lambert2SG.dsm" -na;
+connectAttr "KitchenWallsShape.ciog.cog[3]" "lambert2SG.dsm" -na;
 connectAttr "polySurfaceShape1.iog.og[1]" "lambert2SG.dsm" -na;
 connectAttr "polySurfaceShape1.ciog.cog[0]" "lambert2SG.dsm" -na;
 connectAttr "groupId1.msg" "lambert2SG.gn" -na;
@@ -4605,18 +4836,6 @@ connectAttr "Tile2Shape.iog" "lambert4SG.dsm" -na;
 connectAttr "Tile7Shape.iog" "lambert4SG.dsm" -na;
 connectAttr "lambert4SG.msg" "materialInfo3.sg";
 connectAttr "WhiteTile.msg" "materialInfo3.m";
-connectAttr "lambert3SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
-		;
-connectAttr "BlackTile.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
-		;
-connectAttr "WhiteTile.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
-		;
-connectAttr "lambert4SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
-		;
-connectAttr "LightBlueWall.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
-		;
-connectAttr "lambert2SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
-		;
 connectAttr "pasted__lambert4SG.msg" "pasted__materialInfo3.sg";
 connectAttr "pasted__WhiteTile.msg" "pasted__materialInfo3.m";
 connectAttr "pasted__WhiteTile.oc" "pasted__lambert4SG.ss";
@@ -4698,12 +4917,48 @@ connectAttr "pasted__pasted__lambert4SG3.msg" "pasted__pasted__materialInfo8.sg"
 		;
 connectAttr "pasted__pasted__WhiteTile3.msg" "pasted__pasted__materialInfo8.m";
 connectAttr "pasted__pasted__WhiteTile3.oc" "pasted__pasted__lambert4SG3.ss";
-connectAttr "KitchenWallsShape.o" "polyBoolean1.ip[0]";
-connectAttr "pCubeShape1.o" "polyBoolean1.ip[1]";
-connectAttr "KitchenWallsShape.wm" "polyBoolean1.im[0]";
-connectAttr "pCubeShape1.wm" "polyBoolean1.im[1]";
 connectAttr "polyCube1.out" "groupParts1.ig";
 connectAttr "groupId3.id" "groupParts1.gi";
+connectAttr "KitchenWallsShape.o" "polyBoolean1.ip[0]";
+connectAttr "WindowCutShape.o" "polyBoolean1.ip[1]";
+connectAttr "KitchenWallsShape.wm" "polyBoolean1.im[0]";
+connectAttr "WindowCutShape.wm" "polyBoolean1.im[1]";
+connectAttr "Wood.oc" "lambert5SG.ss";
+connectAttr "WindowsillShape.iog" "lambert5SG.dsm" -na;
+connectAttr "lambert5SG.msg" "materialInfo4.sg";
+connectAttr "Wood.msg" "materialInfo4.m";
+connectAttr "FridgeWhite.oc" "lambert6SG.ss";
+connectAttr "FridgeShape.iog" "lambert6SG.dsm" -na;
+connectAttr "lambert6SG.msg" "materialInfo5.sg";
+connectAttr "FridgeWhite.msg" "materialInfo5.m";
+connectAttr "FridgeRed.oc" "lambert7SG.ss";
+connectAttr "FridgeDoorShape.iog" "lambert7SG.dsm" -na;
+connectAttr "lambert7SG.msg" "materialInfo6.sg";
+connectAttr "FridgeRed.msg" "materialInfo6.m";
+connectAttr "LightBlueWall.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[0].dn"
+		;
+connectAttr "lambert5SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[1].dn"
+		;
+connectAttr "FridgeWhite.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[2].dn"
+		;
+connectAttr "lambert4SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[3].dn"
+		;
+connectAttr "lambert3SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[4].dn"
+		;
+connectAttr "lambert6SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[5].dn"
+		;
+connectAttr "BlackTile.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[6].dn"
+		;
+connectAttr "lambert2SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
+		;
+connectAttr "lambert7SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[8].dn"
+		;
+connectAttr "FridgeRed.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[9].dn"
+		;
+connectAttr "WhiteTile.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[10].dn"
+		;
+connectAttr "Wood.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[11].dn"
+		;
 connectAttr "lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "pasted__lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert3SG.pa" ":renderPartition.st" -na;
@@ -4729,6 +4984,9 @@ connectAttr "pasted__pasted__pasted__lambert4SG.pa" ":renderPartition.st" -na;
 connectAttr "pasted__pasted__pasted__lambert3SG.pa" ":renderPartition.st" -na;
 connectAttr "pasted__pasted__pasted__lambert3SG2.pa" ":renderPartition.st" -na;
 connectAttr "pasted__pasted__pasted__lambert4SG2.pa" ":renderPartition.st" -na;
+connectAttr "lambert5SG.pa" ":renderPartition.st" -na;
+connectAttr "lambert6SG.pa" ":renderPartition.st" -na;
+connectAttr "lambert7SG.pa" ":renderPartition.st" -na;
 connectAttr "LightBlueWall.msg" ":defaultShaderList1.s" -na;
 connectAttr "pasted__LightBlueWall.msg" ":defaultShaderList1.s" -na;
 connectAttr "BlackTile.msg" ":defaultShaderList1.s" -na;
@@ -4756,10 +5014,15 @@ connectAttr "pasted__pasted__pasted__BlackTile2.msg" ":defaultShaderList1.s" -na
 		;
 connectAttr "pasted__pasted__pasted__WhiteTile2.msg" ":defaultShaderList1.s" -na
 		;
+connectAttr "Wood.msg" ":defaultShaderList1.s" -na;
+connectAttr "FridgeWhite.msg" ":defaultShaderList1.s" -na;
+connectAttr "FridgeRed.msg" ":defaultShaderList1.s" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-connectAttr "pCubeShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
-connectAttr "pCubeShape1.ciog.cog[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "WindowCutShape.iog.og[3]" ":initialShadingGroup.dsm" -na;
+connectAttr "WindowCutShape.ciog.cog[3]" ":initialShadingGroup.dsm" -na;
 connectAttr "polySurfaceShape1.iog.og[0]" ":initialShadingGroup.dsm" -na;
+connectAttr "FridgeHandelShape1.iog" ":initialShadingGroup.dsm" -na;
+connectAttr "FridgeHandelShape2.iog" ":initialShadingGroup.dsm" -na;
 connectAttr "groupId3.msg" ":initialShadingGroup.gn" -na;
 connectAttr "groupId4.msg" ":initialShadingGroup.gn" -na;
-// End of TileFloorCreation.ma
+// End of Fridge-Whiteboxing.ma
