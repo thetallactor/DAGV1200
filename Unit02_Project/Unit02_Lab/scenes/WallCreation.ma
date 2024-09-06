@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
-//Name: NewStuff_01.ma
-//Last modified: Thu, Sep 05, 2024 09:40:35 PM
+//Name: WallCreation.ma
+//Last modified: Thu, Sep 05, 2024 09:41:28 PM
 //Codeset: 1252
 requires maya "2024";
 currentUnit -l centimeter -a degree -t film;
@@ -9,7 +9,7 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 22631)";
-fileInfo "UUID" "3551D245-4784-B783-38E3-1CB3541C67C9";
+fileInfo "UUID" "C37A2A61-4AD7-9A36-0AEB-5A8848CA3445";
 createNode transform -s -n "persp";
 	rename -uid "FE991246-4E2C-B5DF-4CB6-7AA6E27967D5";
 	setAttr ".v" no;
@@ -288,4 +288,4 @@ connectAttr "LightBlueWall.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0]
 connectAttr "lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "LightBlueWall.msg" ":defaultShaderList1.s" -na;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-// End of NewStuff_01.ma
+// End of WallCreation.ma
