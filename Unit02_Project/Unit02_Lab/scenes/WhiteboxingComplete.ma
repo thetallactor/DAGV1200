@@ -1,8 +1,9 @@
 //Maya ASCII 2024 scene
 //Name: WhiteboxingComplete.ma
-//Last modified: Fri, Sep 06, 2024 07:07:48 PM
+//Last modified: Fri, Sep 06, 2024 07:17:58 PM
 //Codeset: 1252
 requires maya "2024";
+requires "stereoCamera" "10.0";
 requires "stereoCamera" "10.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
@@ -10,17 +11,17 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 22631)";
-fileInfo "UUID" "ABB175A8-4DB2-EB4B-D47E-F3860963F75F";
+fileInfo "UUID" "4D684323-4E32-7061-C96E-118E30394F9E";
 createNode transform -s -n "persp";
 	rename -uid "FE991246-4E2C-B5DF-4CB6-7AA6E27967D5";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 11.829710234337245 6.3602885501448281 6.2978139775411695 ;
-	setAttr ".r" -type "double3" -14.1383527413845 2581.7999999934809 1.6826523821572632e-15 ;
+	setAttr ".t" -type "double3" 11.536332680651338 6.7578841079600398 8.5202443078472747 ;
+	setAttr ".r" -type "double3" -15.338352741358618 2573.799999993108 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "DBEB4EE9-42E8-B6E9-EAF6-A284A37748A7";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 13.956358037873613;
+	setAttr ".coi" 17.482114010871335;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
@@ -4784,11 +4785,8 @@ createNode mesh -n "FaucetPart1Shape" -p "FaucetPart1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
-	setAttr -s 5 ".pt";
-	setAttr ".pt[2]" -type "float3" 7.6368451e-08 0 -2.9802322e-08 ;
-	setAttr ".pt[3]" -type "float3" -7.6368451e-08 0 -2.9802322e-08 ;
-	setAttr ".pt[4]" -type "float3" 0 0 2.9802322e-08 ;
-	setAttr ".pt[5]" -type "float3" 0 0 2.9802322e-08 ;
+	setAttr -s 4 ".pt[2:5]" -type "float3"  7.6368451e-08 0 -2.9802322e-08 
+		-7.6368451e-08 0 -2.9802322e-08 0 0 2.9802322e-08 0 0 2.9802322e-08;
 	setAttr -s 8 ".vt[0:7]"  -2.91544056 1.60340714 1.61652744 -2.76332474 1.60340714 1.61652744
 		 -2.91544056 1.91873932 1.61652744 -2.76332474 1.91873932 1.61652744 -2.91544056 1.91873932 1.47086847
 		 -2.76332474 1.91873932 1.47086847 -2.91544056 1.60340714 1.47086847 -2.76332474 1.60340714 1.47086847;
@@ -6875,23 +6873,23 @@ createNode mesh -n "KnifeShape2" -p "Knife2";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "CDED5918-4459-8EF8-B0D2-9CAD496249CD";
+	rename -uid "C6520FE5-4973-FC31-B10F-2EB6B50919AA";
 	setAttr -s 35 ".lnk";
 	setAttr -s 35 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "54A6FD7D-4B44-F2F1-E4A6-5FB64469DE3C";
+	rename -uid "E0658E22-4E22-B631-FBCC-5C8317205550";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "2BC0C03F-4F00-6093-EE81-1AA82D675A4A";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "AC4986F4-498E-5D29-2A03-7A8B5B28E46E";
+	rename -uid "7F80F83F-48ED-E9E3-5AFE-6A8BC70A27A7";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "B3E71E57-45B3-E25F-F6F2-FA836893AC28";
 	setAttr ".g" yes;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "DC79812A-4B3F-D91F-6649-D3B7CCECF614";
+	rename -uid "F8957819-4BB3-5177-A4AE-67B415F7BCCD";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "6E612F14-4427-E683-155B-88AD6C424563";
+	rename -uid "2FDF5997-4271-21E0-BE6E-7B9C42AA6E43";
 createNode script -n "uiConfigurationScriptNode";
 	rename -uid "8310B9EF-42F2-6896-580C-678BC845483B";
 	setAttr ".b" -type "string" (
@@ -7421,8 +7419,6 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "groupId6.id" "polySurfaceShape1.iog.og[1].gid";
 connectAttr "lambert2SG.mwc" "polySurfaceShape1.iog.og[1].gco";
 connectAttr "groupId5.id" "polySurfaceShape1.ciog.cog[0].cgid";
