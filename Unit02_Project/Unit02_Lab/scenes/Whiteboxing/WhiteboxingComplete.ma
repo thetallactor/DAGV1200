@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: WhiteboxingComplete.ma
-//Last modified: Tue, Sep 10, 2024 09:44:37 AM
+//Last modified: Thu, Sep 12, 2024 07:36:38 PM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -11,12 +11,12 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 22631)";
-fileInfo "UUID" "516E3087-4410-E07D-941D-C2A300B4DE57";
+fileInfo "UUID" "00492161-40E2-34F7-88E6-668B85C76F1D";
 createNode transform -s -n "persp";
 	rename -uid "FE991246-4E2C-B5DF-4CB6-7AA6E27967D5";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 8.2362373323966303 11.436062677167907 7.1469073305824171 ;
-	setAttr ".r" -type "double3" -37.538352729461273 2568.9999999909728 0 ;
+	setAttr ".t" -type "double3" 11.365395661248767 6.63485326258182 6.8994813641272703 ;
+	setAttr ".r" -type "double3" -15.338352729458887 2578.5999999909577 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "DBEB4EE9-42E8-B6E9-EAF6-A284A37748A7";
 	setAttr -k off ".v" no;
@@ -6907,23 +6907,23 @@ createNode mesh -n "WindowsillShape" -p "Windowsill";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "AD7E3C4E-435C-D0BE-ECC9-7988D67282B9";
+	rename -uid "3F12C5FE-4B4C-1299-5D09-77B3BB574A69";
 	setAttr -s 35 ".lnk";
 	setAttr -s 35 ".slnk";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "B96BE6DF-4AD4-7F06-C075-DE90F5326D0B";
+	rename -uid "02CD20B5-43EC-4036-5112-1597D86499A5";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "2BC0C03F-4F00-6093-EE81-1AA82D675A4A";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "17EAD76F-4BA2-A3A8-363D-9EB9B1626E03";
+	rename -uid "3DC2D634-492B-3C54-191A-419F83CD3237";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "B3E71E57-45B3-E25F-F6F2-FA836893AC28";
 	setAttr ".g" yes;
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "8A1FD496-43D0-2DE0-77A1-3D98DD718889";
+	rename -uid "AC457C55-4EE4-988A-51F4-FB9B0E8BDEC3";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "516DCD73-4BCC-4FBA-14E7-87BCE0D40172";
+	rename -uid "8B8128CB-4D43-CCB7-CA54-FBBC9B0C6101";
 createNode script -n "uiConfigurationScriptNode";
 	rename -uid "8310B9EF-42F2-6896-580C-678BC845483B";
 	setAttr ".b" -type "string" (
@@ -7408,8 +7408,6 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 connectAttr "groupId6.id" "polySurfaceShape1.iog.og[1].gid";
 connectAttr "lambert2SG.mwc" "polySurfaceShape1.iog.og[1].gco";
 connectAttr "groupId5.id" "polySurfaceShape1.ciog.cog[0].cgid";
