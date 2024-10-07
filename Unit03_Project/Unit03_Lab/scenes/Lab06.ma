@@ -1,21 +1,22 @@
 //Maya ASCII 2025ff03 scene
 //Name: Lab06.ma
-//Last modified: Fri, Oct 04, 2024 05:44:39 PM
+//Last modified: Sun, Oct 06, 2024 07:27:54 PM
 //Codeset: 1252
 requires maya "2025ff03";
-requires "mtoa" "5.4.2.1";
+requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiImagerDenoiserOidn"
+		 "mtoa" "5.4.2.1";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202407121012-8ed02f4c99";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 22631)";
-fileInfo "UUID" "9E503D5C-449C-6B04-D83B-EC8C4DED4C20";
+fileInfo "UUID" "5536C10A-46FF-7195-C782-42A2CC933DA1";
 createNode transform -s -n "persp";
 	rename -uid "080C96F2-49B9-96F2-21C3-2286D854F38C";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" -14.47107547036323 7.6179084423488099 21.985319650722481 ;
-	setAttr ".r" -type "double3" -12.33835272960718 -36.600000000001614 -9.9043517977309782e-16 ;
+	setAttr ".r" -type "double3" -12.338352729607182 -36.600000000001614 -9.9043517977309782e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "C44E5AED-441B-E15B-7428-8A842B8F603A";
 	setAttr -k off ".v" no;
@@ -298,20 +299,20 @@ createNode mesh -n "ConcreteShellDock_WBShape" -p "ConcreteShellDock_WB";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "5CA81061-4AA1-29F7-AB13-0D8771BC0E47";
+	rename -uid "A22897F2-4F9A-317F-6F7D-4DA82808F83D";
 	setAttr -s 6 ".lnk";
 	setAttr -s 6 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "207FB1C2-468B-2C07-509D-EE8AB689CBD4";
+	rename -uid "BBBABD72-43B6-F99D-4C0A-0C9A08287102";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "DA4EE6DB-4406-E4EC-6DEA-7ABF8B202C1E";
+	rename -uid "84D3415D-47C1-93BA-3F0E-11A5A1C0B68C";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "527D47F0-4F25-BA75-7690-099254955F61";
+	rename -uid "85372492-42D6-3BB7-6C52-FEA3BBF8F015";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "8308044C-4F5E-6F51-4727-A49F8B9D3256";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "E43A6DDB-4549-A8A8-113A-5190879A1BED";
+	rename -uid "A95CF13A-43FF-FD5B-7CCF-5AA721B09F26";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "A34EB96F-4B9A-DB85-7A46-E2AED89F2ABF";
 	setAttr ".g" yes;
@@ -429,6 +430,21 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "B3B0FEE1-477F-056B-99A0-06BEB7435C82";
 	setAttr ".b" -type "string" "playbackOptions -min 1 -max 120 -ast 1 -aet 200 ";
 	setAttr ".st" 6;
+createNode aiOptions -s -n "defaultArnoldRenderOptions";
+	rename -uid "0E641EED-4FCF-058E-E0C8-C7B159F9F76E";
+	setAttr ".version" -type "string" "5.4.2.1";
+createNode aiAOVFilter -s -n "defaultArnoldFilter";
+	rename -uid "F582884C-4A07-6E78-04CD-18ADF57A910F";
+	setAttr ".ai_translator" -type "string" "gaussian";
+createNode aiAOVDriver -s -n "defaultArnoldDriver";
+	rename -uid "6FF90A79-410D-19FB-D706-24BE13334490";
+	setAttr ".ai_translator" -type "string" "exr";
+createNode aiAOVDriver -s -n "defaultArnoldDisplayDriver";
+	rename -uid "A546153E-41F7-8278-4715-DCBCF9A85C42";
+	setAttr ".ai_translator" -type "string" "maya";
+	setAttr ".output_mode" 0;
+createNode aiImagerDenoiserOidn -s -n "defaultArnoldDenoiser";
+	rename -uid "2A1D03F9-41BE-E65E-3C4E-7792804F855B";
 select -ne :time1;
 	setAttr ".o" 1;
 	setAttr ".unw" 1;
@@ -472,8 +488,6 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
-select -ne :ikSystem;
-	setAttr -s 4 ".sol";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" ":initialParticleSE.message" ":defaultLightSet.message";
 relationship "link" ":lightLinker1" "lambert2SG.message" ":defaultLightSet.message";
@@ -520,6 +534,12 @@ connectAttr "Water_WB1.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[
 		;
 connectAttr "lambert4SG.msg" "hyperShadePrimaryNodeEditorSavedTabsInfo.tgi[0].ni[7].dn"
 		;
+connectAttr ":defaultArnoldDenoiser.msg" ":defaultArnoldRenderOptions.imagers" -na
+		;
+connectAttr ":defaultArnoldDisplayDriver.msg" ":defaultArnoldRenderOptions.drivers"
+		 -na;
+connectAttr ":defaultArnoldFilter.msg" ":defaultArnoldRenderOptions.filt";
+connectAttr ":defaultArnoldDriver.msg" ":defaultArnoldRenderOptions.drvr";
 connectAttr "lambert2SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert3SG.pa" ":renderPartition.st" -na;
 connectAttr "lambert4SG.pa" ":renderPartition.st" -na;
