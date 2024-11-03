@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
-//Name: Lab09.ma
-//Last modified: Sun, Nov 03, 2024 11:28:27 AM
+//Name: Challenge09.ma
+//Last modified: Sun, Nov 03, 2024 11:33:00 AM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -13,7 +13,7 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 26100)";
-fileInfo "UUID" "5805524B-4F89-765B-7A40-49A705696B7C";
+fileInfo "UUID" "46C29C95-410A-C821-4342-79B18C81B061";
 createNode transform -s -n "persp";
 	rename -uid "080C96F2-49B9-96F2-21C3-2286D854F38C";
 	setAttr ".v" no;
@@ -22120,7 +22120,7 @@ createNode mesh -n "AnchorSymbolShape" -p "AnchorSymbol";
 	setAttr ".gtag[4].gtagcmp" -type "componentList" 1 "f[0]";
 	setAttr ".gtag[5].gtagnm" -type "string" "top";
 	setAttr ".gtag[5].gtagcmp" -type "componentList" 16 "f[35]" "f[37:38]" "f[47:52]" "f[64:91]" "f[144:151]" "f[156:176]" "f[184:193]" "f[274:276]" "f[281:286]" "f[304:349]" "f[526:533]" "f[538:543]" "f[546:547]" "f[556:557]" "f[560:561]" "f[582:681]";
-	setAttr ".pv" -type "double2" 0.4443700760602951 0.15488999630193634 ;
+	setAttr ".pv" -type "double2" 0.4443700760602951 0.15489000454545021 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr -s 745 ".uvst[0].uvsp";
 	setAttr ".uvst[0].uvsp[0:249]" -type "float2" 0.67727596 0.7068454 0.67727596
@@ -71946,7 +71946,7 @@ createNode mesh -n "pTorusShape2" -p "pTorus2";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
-	setAttr ".pv" -type "double2" 0.12468070966129818 0.87448288817981012 ;
+	setAttr ".pv" -type "double2" 0.49909593164920807 0.50024662911891937 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr -s 441 ".uvst[0].uvsp";
 	setAttr ".uvst[0].uvsp[0:249]" -type "float2" 0.00041654706 0.99874699 0.012842983
@@ -103941,6 +103941,8 @@ select -ne :defaultColorMgtGlobals;
 select -ne :hardwareRenderGlobals;
 	setAttr ".ctrs" 256;
 	setAttr ".btrs" 512;
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "group1_translateX.o" "Whitebox_Tree.tx";
 connectAttr "group1_translateY.o" "Whitebox_Tree.ty";
 connectAttr "group1_translateZ.o" "Whitebox_Tree.tz";
@@ -104488,4 +104490,4 @@ connectAttr "directionalLight7.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight7.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight8.iog" ":defaultLightSet.dsm" -na;
 connectAttr "|Lighting|areaLight1.iog" ":defaultLightSet.dsm" -na;
-// End of Lab09.ma
+// End of Challenge09.ma
