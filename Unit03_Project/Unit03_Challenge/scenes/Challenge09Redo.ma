@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
-//Name: Lab09Redo.ma
-//Last modified: Fri, Nov 08, 2024 07:01:23 PM
+//Name: Challenge09Redo.ma
+//Last modified: Fri, Nov 08, 2024 07:13:53 PM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -13,7 +13,7 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 26100)";
-fileInfo "UUID" "31199746-409B-B9CC-BB0A-10B9A237412A";
+fileInfo "UUID" "68F2B74D-422E-5A7A-5C32-78992BF2F22B";
 createNode transform -s -n "persp";
 	rename -uid "080C96F2-49B9-96F2-21C3-2286D854F38C";
 	setAttr ".v" no;
@@ -104561,9 +104561,8 @@ createNode mesh -n "polySurfaceShape19" -p "RoofBeam1";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode transform -n "RoofBeam2" -p "|Objects|AllObjects|AllObjects";
 	rename -uid "C7EB2D0E-4AE5-EC29-0448-EDB2FEAA1BD5";
-	setAttr ".t" -type "double3" 0 -0.092809629958620299 0 ;
-	setAttr ".rp" -type "double3" 3.1094400038110015 4.3042642369295265 -1.0336621907097032 ;
-	setAttr ".sp" -type "double3" 3.1094400038110015 4.3042642369295265 -1.0336621907097063 ;
+	setAttr ".rp" -type "double3" 3.1094400038110015 4.2114546069709062 -1.0336621907097032 ;
+	setAttr ".sp" -type "double3" 3.1094400038110015 4.2114546069709062 -1.0336621907097063 ;
 createNode mesh -n "RoofBeam2Shape" -p "RoofBeam2";
 	rename -uid "5046937F-4E52-D0B5-F513-C5B75E5BCBFA";
 	setAttr -k off ".v";
@@ -104622,6 +104621,24 @@ createNode mesh -n "RoofBeam2Shape" -p "RoofBeam2";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
 	setAttr ".covm[0]"  0 1 1;
 	setAttr ".cdvm[0]"  0 1 1;
+	setAttr -s 82 ".pt[0:81]" -type "float3"  0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 0 0 -0.092809632 
+		0;
 	setAttr -s 82 ".vt[0:81]"  3.74551606 4.61548996 -1.55563211 3.75060606 4.60529804 -1.564116
 		 2.53795719 4.22422504 -1.55099225 2.5384562 4.22032118 -1.56027222 2.54105735 4.21135235 -1.564116
 		 2.41397095 4.16996098 -1.43123007 2.41475654 4.18003273 -1.43092752 2.42243385 4.18659925 -1.43019724
@@ -106987,4 +107004,4 @@ connectAttr "directionalLight7.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight7.iog" ":defaultLightSet.dsm" -na;
 connectAttr "areaLight8.iog" ":defaultLightSet.dsm" -na;
 connectAttr "|Lighting|areaLight1.iog" ":defaultLightSet.dsm" -na;
-// End of Lab09Redo.ma
+// End of Challenge09Redo.ma
