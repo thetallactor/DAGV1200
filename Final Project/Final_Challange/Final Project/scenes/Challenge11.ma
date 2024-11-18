@@ -1,6 +1,6 @@
 //Maya ASCII 2024 scene
 //Name: Challenge11.ma
-//Last modified: Sun, Nov 17, 2024 07:10:41 PM
+//Last modified: Sun, Nov 17, 2024 07:15:15 PM
 //Codeset: 1252
 requires maya "2024";
 requires "stereoCamera" "10.0";
@@ -14,21 +14,21 @@ fileInfo "product" "Maya 2024";
 fileInfo "version" "2024";
 fileInfo "cutIdentifier" "202310181224-69282f2959";
 fileInfo "osv" "Windows 11 Pro for Workstations v2009 (Build: 26100)";
-fileInfo "UUID" "863CA033-4ACD-6F65-F9C3-489BBDE0FE59";
+fileInfo "UUID" "42DD1FAE-47F5-4722-524C-4797EE0E2990";
 createNode transform -s -n "persp";
 	rename -uid "2F68E582-4F11-36A8-110F-16ABA0D7A982";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 14.731253426646145 10.739886851646869 17.680999522354377 ;
-	setAttr ".r" -type "double3" -17.138352790941916 8679.7999999968251 -2.0699094693845629e-15 ;
+	setAttr ".t" -type "double3" 27.094297720600061 14.95784058580889 29.478510247011975 ;
+	setAttr ".r" -type "double3" -16.538352790913148 8678.5999999998403 2.034850521325823e-15 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "72AA1294-4CC3-C505-629B-0D88321C61C1";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
-	setAttr ".coi" 24.083021919289344;
+	setAttr ".coi" 12.324442540037381;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
 	setAttr ".man" -type "string" "persp_mask";
-	setAttr ".tp" -type "double3" 0 3.6431007385253906 0 ;
+	setAttr ".tp" -type "double3" 46.147041320800781 5.8916776180267334 1.2632396221160889 ;
 	setAttr ".hc" -type "string" "viewSet -p %camera";
 createNode transform -s -n "top";
 	rename -uid "F7C07E43-4435-4F05-25FB-1085C7FCD24F";
@@ -93765,7 +93765,7 @@ createNode groupId -n "groupId72";
 	rename -uid "21D1B7BF-438E-9857-51F1-2B88C3419802";
 	setAttr ".ihi" 0;
 createNode mayaUsdLayerManager -n "mayaUsdLayerManager1";
-	rename -uid "C602973C-4D0D-3C2F-1259-D7BB12885E95";
+	rename -uid "9F09E59E-4AC6-F327-D1BD-6E800E15223F";
 	setAttr ".sst" -type "string" "";
 select -ne :time1;
 	setAttr ".o" 1;
